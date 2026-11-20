@@ -404,8 +404,21 @@ export const PublicShowcaseWebsite: React.FC<PublicShowcaseWebsiteProps> = ({ on
       {/* ==================================================================== */}
       {/* 2. HERO SECTION */}
       {/* ==================================================================== */}
-      <section className="relative overflow-hidden py-16 sm:py-24 lg:py-28 border-b border-[#2C2720]/60">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+      <section className="relative overflow-hidden py-20 sm:py-28 lg:py-36 border-b border-[#2C2720]/60 bg-[#11100E]">
+        {/* 4K Luxury Architectural Building Background */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=3840&q=85"
+            alt="Kanpur Prime Realty Luxury Architectural Estate"
+            className="w-full h-full object-cover object-center filter brightness-[0.45] contrast-[1.08] saturate-[0.85]"
+            loading="eager"
+          />
+          {/* Multi-layered luxury gradients for flawless text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#11100E]/95 via-[#11100E]/80 to-[#11100E]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#11100E] via-transparent to-[#11100E]/70" />
+        </div>
+
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-6">
             <div className="inline-flex items-center gap-2 rounded px-3 py-1 text-xs font-mono tracking-widest uppercase badge-gold font-sans">
               <Sparkles className="h-3.5 w-3.5 text-[#C2A675]" />
