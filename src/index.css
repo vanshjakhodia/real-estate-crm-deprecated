@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-display: 'Cinzel', Georgia, serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #11100E;
+    color: #EAE5D9;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: var(--font-serif);
+    letter-spacing: -0.015em;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Vintage Old Money Architectural Styling */
+.vintage-panel {
+  background: #171512;
+  border: 1px solid #2C2720;
+}
+
+.vintage-card {
+  background: #1B1916;
+  border: 1px solid #332D24;
+}
+
+.vintage-card-elevated {
+  background: #201E1A;
+  border: 1px solid #3D362C;
+}
+
+.vintage-gold-border {
+  border-color: #8C734B;
+}
+
+.vintage-gold-text {
+  color: #C2A675;
+}
+
+/* Restrained noble badge tokens (no loud saturated neons) */
+.badge-gold {
+  background: rgba(184, 151, 88, 0.12);
+  border: 1px solid rgba(184, 151, 88, 0.32);
+  color: #D5BE8F;
+}
+
+.badge-forest {
+  background: rgba(45, 68, 52, 0.28);
+  border: 1px solid rgba(62, 92, 70, 0.45);
+  color: #9DBFA5;
+}
+
+.badge-cognac {
+  background: rgba(70, 48, 32, 0.28);
+  border: 1px solid rgba(95, 66, 46, 0.45);
+  color: #C8A389;
+}
+
+.badge-oxblood {
+  background: rgba(65, 32, 32, 0.28);
+  border: 1px solid rgba(90, 45, 45, 0.45);
+  color: #BFA0A0;
+}
+
+.badge-stone {
+  background: rgba(40, 37, 33, 0.45);
+  border: 1px solid rgba(60, 56, 50, 0.6);
+  color: #ACA496;
+}
+
+/* Custom scrollbars in warm aged bronze */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #11100E;
+}
+::-webkit-scrollbar-thumb {
+  background: #2C2720;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #423B31;
+}
+
+/* Custom Leaflet Luxury Dark Popups & Map Controls */
+.leaflet-popup-content-wrapper {
+  background-color: #1A1713 !important;
+  color: #EAE5D9 !important;
+  border: 1px solid #4D412F !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.75) !important;
+}
+
+.leaflet-popup-tip {
+  background-color: #1A1713 !important;
+  border: 1px solid #4D412F !important;
+}
+
+.leaflet-container {
+  background-color: #0E0D0B !important;
+  font-family: inherit !important;
+}
+
+.leaflet-bar {
+  border-color: #383024 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+}
+
+.leaflet-bar a {
+  background-color: #1E1C18 !important;
+  color: #C2A675 !important;
+  border-bottom: 1px solid #332B1E !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: #2C261F !important;
+  color: #F4EFE6 !important;
+}
+
