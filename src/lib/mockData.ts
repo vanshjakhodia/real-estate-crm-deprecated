@@ -8,7 +8,7 @@ import { Lead, Property, Appointment, Followup, ActivityLog, Profile, BusinessSe
 export const initialProfiles: Profile[] = [
   {
     id: 'user-admin-001',
-    email: 'admin@kanpurprimerealty.com',
+    email: 'admin@lineageproperties.com',
     full_name: 'Admin',
     role: 'admin',
     phone: '',
@@ -19,7 +19,7 @@ export const initialProfiles: Profile[] = [
 
 export const initialSettings: BusinessSettings = {
   id: 'settings-001',
-  company_name: 'Kanpur Prime Realty CRM',
+  company_name: 'Lineage Properties CRM',
   city: 'Kanpur',
   working_hours_start: '11:00',
   working_hours_end: '19:00',

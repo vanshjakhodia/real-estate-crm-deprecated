@@ -201,7 +201,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           </div>
 
           <div className="mt-6 flex items-center justify-between border-t border-[#2C2720] pt-4 text-xs text-[#8C8477]">
-            <span className="font-mono text-[11px]">Kanpur Prime Realty Cadence Engine</span>
+            <span className="font-mono text-[11px]">Lineage Properties Pvt Ltd Cadence Engine</span>
             <button
               onClick={() => onNavigate('leads')}
               className="flex items-center gap-1 font-medium text-[#C2A675] hover:text-[#D5BE8F] transition-colors"

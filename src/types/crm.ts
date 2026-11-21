@@ -1,5 +1,5 @@
 // ====================================================================
-// CORE TYPES: Kanpur Prime Realty CRM
+// CORE TYPES: Lineage Properties CRM
 // ====================================================================
 
 export type UserRole = 'admin' | 'agent';

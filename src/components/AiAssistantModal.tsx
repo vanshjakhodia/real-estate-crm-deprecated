@@ -20,7 +20,7 @@ export const AiAssistantModal: React.FC<AiAssistantModalProps> = ({ isOpen, onCl
     {
       id: 'welcome',
       sender: 'ai',
-      text: `Welcome. I am your Gemini Estate Intelligence Assistant for Kanpur Prime Realty. I can answer inquiries regarding your registered client dossiers, active estate portfolio, scheduled walkthroughs, and real-time Kanpur market intelligence. How may I assist you today?`,
+      text: `Welcome. I am your Gemini Estate Intelligence Assistant for Lineage Properties Pvt Ltd. I can answer inquiries regarding your registered client dossiers, active estate portfolio, scheduled walkthroughs, and real-time Kanpur market intelligence. How may I assist you today?`,
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
   ]);

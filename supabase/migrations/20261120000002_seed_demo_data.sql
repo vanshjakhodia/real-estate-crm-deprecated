@@ -13,7 +13,7 @@ insert into public.business_settings (
   ai_tone,
   ai_language
 ) values (
-  'Kanpur Prime Realty',
+  'Lineage Properties Pvt Ltd',
   'Kanpur',
   '10:00',
   '18:00',
@@ -273,7 +273,7 @@ insert into public.messages (
   'out',
   'instagram',
   'ai',
-  'Namaste Dr. Alok! Kanpur Prime Realty ki taraf se swagat hai. Ji haan, Civil Lines me hamara flagship project Ganga Heights available hai jisme premium 3 & 4 BHK river-view residences hain. Price range ₹1.45 Cr se ₹2.25 Cr tak hai. Kya aap apne family ke liye dekh rahe hain ya investment ke liye?',
+  'Namaste Dr. Alok! Lineage Properties Pvt Ltd ki taraf se swagat hai. Ji haan, Civil Lines me hamara flagship project Ganga Heights available hai jisme premium 3 & 4 BHK river-view residences hain. Price range ₹1.45 Cr se ₹2.25 Cr tak hai. Kya aap apne family ke liye dekh rahe hain ya investment ke liye?',
   now() - interval '2 days' + interval '2 minutes'
 ),
 (

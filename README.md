@@ -1,4 +1,4 @@
-# 🏢 Kanpur Prime Realty CRM
+# 🏢 Lineage Properties CRM
 
 Internal All-in-One Real Estate Intelligence & CRM software designed specifically for real estate developers and agencies in **Kanpur, India**. Replaces scattered spreadsheets, manual call logs, and separate booking calendars with a unified, role-enforced workspace.
 
@@ -100,7 +100,7 @@ real-estate-crm/
    ```env
    VITE_SUPABASE_URL=https://your-project.supabase.co
    VITE_SUPABASE_ANON_KEY=your-anon-public-key-here
-   VITE_COMPANY_NAME="Kanpur Prime Realty"
+   VITE_COMPANY_NAME="Lineage Properties Pvt Ltd"
    VITE_CITY="Kanpur"
    ```
 

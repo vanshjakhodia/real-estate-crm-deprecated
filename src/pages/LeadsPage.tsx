@@ -498,7 +498,7 @@ export const LeadsPage: React.FC<LeadsPageProps> = ({ onSelectLead, initialFilte
                         <div className="flex items-center justify-end gap-1.5">
                           {/* WhatsApp Button */}
                           <a
-                            href={buildWhatsAppLink(lead.phone, `Namaste ${lead.full_name} ji! Kanpur Prime Realty se contact kar rahe hain.`)}
+                            href={buildWhatsAppLink(lead.phone, `Namaste ${lead.full_name} ji! Lineage Properties Pvt Ltd se contact kar rahe hain.`)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="rounded-lg bg-[#1B261F] border border-[#2B3E30] p-1.5 text-[#9DBFA5] hover:bg-[#25362B] transition-colors"

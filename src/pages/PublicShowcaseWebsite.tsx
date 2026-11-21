@@ -409,7 +409,7 @@ export const PublicShowcaseWebsite: React.FC<PublicShowcaseWebsiteProps> = ({ on
         <div className="absolute inset-0 z-0 pointer-events-none">
           <img
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=3840&q=85"
-            alt="Kanpur Prime Realty Luxury Architectural Estate"
+            alt="Lineage Properties Pvt Ltd Luxury Architectural Estate"
             className="w-full h-full object-cover object-center filter brightness-[0.45] contrast-[1.08] saturate-[0.85]"
             loading="eager"
           />
@@ -602,7 +602,7 @@ export const PublicShowcaseWebsite: React.FC<PublicShowcaseWebsiteProps> = ({ on
                 registered in our executive ledger.
               </p>
               <p className="text-[11px] text-[#8C8477]">
-                A managing associate from Kanpur Prime Realty has received your dossier and will coordinate property entry protocols.
+                A managing associate from Lineage Properties Pvt Ltd has received your dossier and will coordinate property entry protocols.
               </p>
               <div className="pt-4 flex flex-wrap justify-center gap-3">
                 <button
@@ -900,7 +900,7 @@ export const PublicShowcaseWebsite: React.FC<PublicShowcaseWebsiteProps> = ({ on
                     className="mt-0.5 rounded border-[#4A3F31] bg-[#1A1814] text-[#C2A675] focus:ring-0"
                   />
                   <span className="text-[11px] text-[#A8A194] leading-relaxed">
-                    I consent to Kanpur Prime Realty processing my details under the Digital Personal Data Protection (DPDP) Act, 2023 for scheduling this walkthrough and transmitting property disclosures.
+                    I consent to Lineage Properties Pvt Ltd processing my details under the Digital Personal Data Protection (DPDP) Act, 2023 for scheduling this walkthrough and transmitting property disclosures.
                   </span>
                 </label>
               </div>
@@ -1063,7 +1063,7 @@ export const PublicShowcaseWebsite: React.FC<PublicShowcaseWebsiteProps> = ({ on
                 <h3 className="font-serif text-xl font-bold text-[#F4EFE6]">My Scheduled Engagements</h3>
               </div>
               <p className="text-xs text-[#8C8477] mt-1">
-                Active appointments and walkthrough requests registered with Kanpur Prime Realty.
+                Active appointments and walkthrough requests registered with Lineage Properties Pvt Ltd.
               </p>
             </div>
 
@@ -1221,7 +1221,7 @@ export const PublicShowcaseWebsite: React.FC<PublicShowcaseWebsiteProps> = ({ on
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-[11px]">© {new Date().getFullYear()} Kanpur Prime Realty. All rights reserved.</span>
+            <span className="text-[11px]">© {new Date().getFullYear()} Lineage Properties Pvt Ltd. All rights reserved.</span>
           </div>
         </div>
       </footer>

@@ -1,5 +1,5 @@
 // ====================================================================
-// UTILITY FUNCTIONS: Kanpur Prime Realty CRM
+// UTILITY FUNCTIONS: Lineage Properties CRM
 // ====================================================================
 
 /**

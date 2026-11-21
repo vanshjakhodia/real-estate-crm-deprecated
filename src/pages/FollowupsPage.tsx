@@ -88,7 +88,7 @@ export const FollowupsPage: React.FC<FollowupsPageProps> = ({ onSelectLead, onBa
                   <div className="flex items-center gap-2">
                     {lead?.phone && (
                       <a
-                        href={buildWhatsAppLink(lead.phone, `Namaste ${lead.full_name} ji! Kanpur Prime Realty se contact kar rahe hain.`)}
+                        href={buildWhatsAppLink(lead.phone, `Namaste ${lead.full_name} ji! Lineage Properties Pvt Ltd se contact kar rahe hain.`)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-1.5 rounded-lg bg-[#1B261F] border border-[#2B3E30] px-3.5 py-1.5 text-xs font-medium text-[#9DBFA5] hover:bg-[#25362B]"

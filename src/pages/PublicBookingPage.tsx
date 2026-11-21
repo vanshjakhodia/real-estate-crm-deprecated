@@ -397,7 +397,7 @@ export const PublicBookingPage: React.FC<PublicBookingPageProps> = ({ onBackToAp
         )}
 
         <div className="text-center text-xs text-slate-500">
-          Kanpur Prime Realty • Licensed & RERA registered projects in Kanpur, Uttar Pradesh
+          Lineage Properties Pvt Ltd • Licensed & RERA registered projects in Kanpur, Uttar Pradesh
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 -- ====================================================================
--- PHASE 1: CORE CRM SCHEMA, RLS & RPC (Kanpur Prime Realty CRM)
+-- PHASE 1: CORE CRM SCHEMA, RLS & RPC (Lineage Properties CRM)
 -- ====================================================================
 
 -- 1. Enable UUID extension
@@ -19,7 +19,7 @@ create table if not exists public.profiles (
 -- 3. Business Settings table
 create table if not exists public.business_settings (
   id uuid primary key default gen_random_uuid(),
-  company_name text not null default 'Kanpur Prime Realty',
+  company_name text not null default 'Lineage Properties Pvt Ltd',
   city text not null default 'Kanpur',
   working_hours_start text not null default '10:00',
   working_hours_end text not null default '18:00',

@@ -12,7 +12,7 @@ truncate table public.properties cascade;
 
 -- Reset default company settings
 update public.business_settings set
-  company_name = 'Kanpur Prime Realty',
+  company_name = 'Lineage Properties Pvt Ltd',
   city = 'Kanpur',
   working_hours_start = '10:00',
   working_hours_end = '18:00',

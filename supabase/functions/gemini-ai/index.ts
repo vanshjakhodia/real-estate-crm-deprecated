@@ -154,7 +154,7 @@ serve(async (req) => {
         supabase.from("appointments").select("id, scheduled_at, status, type, notes").eq("status", "booked").order("scheduled_at", { ascending: true }).limit(10)
       ]);
 
-      const systemPrompt = `You are the internal AI executive assistant for Kanpur Prime Realty CRM in Kanpur, India.
+      const systemPrompt = `You are the internal AI executive assistant for Lineage Properties CRM in Kanpur, India.
 Your mission is to assist the real estate team with accurate answers based ONLY on the database records provided below.
 Rules:
 1. Ground every statement in the provided data.
@@ -201,7 +201,7 @@ ${JSON.stringify(appointmentsRes.data || [], null, 2)}`;
       const { data: messages } = await supabase.from("messages").select("sender, content, created_at").eq("lead_id", lead_id).order("created_at", { ascending: false }).limit(6);
       const { data: properties } = await supabase.from("properties").select("project_name, location, price_min, price_max, bhk").eq("status", "available").limit(5);
 
-      const systemPrompt = `You are a real estate communication expert for Kanpur Prime Realty in Kanpur, India.
+      const systemPrompt = `You are a real estate communication expert for Lineage Properties Pvt Ltd in Kanpur, India.
 Draft a short, engaging, polite WhatsApp/Email follow-up message for the agent to review and send to this lead.
 Language: ${language} (if Hinglish, mix natural conversational Hindi written in Roman script with English).
 Tone: ${tone}.
@@ -243,7 +243,7 @@ ${JSON.stringify(properties || [])}`;
       const { data: messages } = await supabase.from("messages").select("sender, content").eq("lead_id", lead_id).order("created_at", { ascending: false }).limit(10);
       const { data: appointments } = await supabase.from("appointments").select("type, scheduled_at, status").eq("lead_id", lead_id);
 
-      const systemPrompt = `You are an automated Real Estate Lead Qualifier for Kanpur Prime Realty.
+      const systemPrompt = `You are an automated Real Estate Lead Qualifier for Lineage Properties Pvt Ltd.
 Evaluate the lead profile and recent messages, then classify them according to these STRICT criteria:
 
 - "hot": Clear budget specified + Timeline within 1-2 months or immediate + Booked or explicitly requested site visit/consultation.
