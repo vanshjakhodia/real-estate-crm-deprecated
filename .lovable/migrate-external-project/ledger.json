@@ -1,0 +1,111 @@
+{
+  "source": "code archive",
+  "archive": "real-estate-crm.zip",
+  "capabilities": [
+    {
+      "capability": "application code",
+      "source": "React CRM, public showcase, appointment booking, market map, Excel workflows and Gemini assistant in the archive",
+      "outcome": "Recreated the public site and core CRM pages in TanStack Start; Gemini assistant features remain disabled at the user's request",
+      "status": "partial",
+      "next_action": "No AI action unless requested; verify signed-in CRM behavior when an authorized staff session is available"
+    },
+    {
+      "capability": "database schema",
+      "source": "Three application SQL migrations in the archive",
+      "outcome": "Created the CRM tables, separate roles, RLS policies, appointment validation, public booking and staff appointment checks in Lovable Cloud; linter findings are limited to intentionally exposed, validation-guarded SECURITY DEFINER functions",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "application records",
+      "source": "No record export was attached; the source UI states it starts with a clean slate, while optional synthetic seed SQL was not used",
+      "outcome": "No existing or synthetic CRM records were imported; all application-table counts are zero after removing the temporary booking test",
+      "status": "pending",
+      "next_action": "Request sanitized CSV or JSON exports after the preview"
+    },
+    {
+      "capability": "auth identities",
+      "source": "No user export was attached; the source used a hardcoded PIN and client-side role simulation",
+      "outcome": "Replaced the mock gate with Cloud sign-in and invitation-only staff access; staff names and phone numbers are retained in profiles as requested; no legacy identities or roles were imported and signed-in verification remains pending because temporary account creation was declined",
+      "status": "pending",
+      "next_action": "Request original user IDs, emails, profiles, roles and memberships; verify with an authorized staff account"
+    },
+    {
+      "capability": "authorization",
+      "source": "Simulated owner and agent roles with bundled access policies",
+      "outcome": "Roles are stored separately and RLS restricts staff records by role and assignment; signed-out redirect was verified, but signed-in role boundaries were not exercised",
+      "status": "pending",
+      "next_action": "Verify admin and agent access with an authorized staff session"
+    },
+    {
+      "capability": "uploaded file bytes",
+      "source": "No uploaded files found in the archive",
+      "outcome": "No file bytes to migrate",
+      "status": "not_present",
+      "next_action": "none"
+    },
+    {
+      "capability": "external providers",
+      "source": "Google Gemini API, public map tiles and an official UP registry link",
+      "outcome": "The market-map and registry references are retained; Gemini assistant features are intentionally disabled by the user's choice",
+      "status": "accepted",
+      "next_action": "None unless the user asks to re-enable AI"
+    },
+    {
+      "capability": "public endpoints",
+      "source": "Public property showcase, appointment form and booking RPC",
+      "outcome": "Public pages rendered and a temporary appointment was created and read back successfully, then its lead, appointment and activity entry were removed",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "callbacks",
+      "source": "No non-auth external callback URL or callback implementation found",
+      "outcome": "No non-auth callback to migrate; app sign-in callbacks were recreated",
+      "status": "not_present",
+      "next_action": "none"
+    },
+    {
+      "capability": "webhooks",
+      "source": "Meta HMAC helper and tests only; no live handler or caller found",
+      "outcome": "No webhook endpoint was invented; the unused signature helper is not treated as a live integration",
+      "status": "not_present",
+      "next_action": "none unless a live caller is identified before cutover"
+    },
+    {
+      "capability": "schedules",
+      "source": "No scheduled jobs found in the archive",
+      "outcome": "No scheduled work to migrate",
+      "status": "not_present",
+      "next_action": "none"
+    },
+    {
+      "capability": "secrets",
+      "source": "GEMINI_API_KEY and optional GEMINI_MODEL variable names only; no values included",
+      "outcome": "The user chose to keep AI disabled, so no Gemini API key was requested or stored",
+      "status": "accepted",
+      "next_action": "None unless the user asks to re-enable AI"
+    },
+    {
+      "capability": "payments",
+      "source": "No payment integration found in the archive",
+      "outcome": "No payment capability to migrate",
+      "status": "not_present",
+      "next_action": "none"
+    },
+    {
+      "capability": "cutover",
+      "source": "Archive supplied without a published source URL, record export, or user export",
+      "outcome": "Lovable preview is available; production cutover and legacy data transfer are not verified",
+      "status": "pending",
+      "next_action": "Import eligible exports and verify source-to-preview behavior before cutover"
+    },
+    {
+      "capability": "verification",
+      "source": "Archive tests and application workflows",
+      "outcome": "Five focused tests passed; public home, booking form, successful booking, cleanup, route metadata and signed-out staff redirect were checked; signed-in CRM remains unverified and AI is intentionally disabled",
+      "status": "partial",
+      "next_action": "Obtain data and user exports and verify signed-in CRM flows with an authorized account; AI remains off unless requested"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1795191453602,
+      "tag": "0000_create_kanpur_realty_crm",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795191494778,
+      "tag": "0001_tighten_staff_appointment_ownership",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795191649839,
+      "tag": "0002_allow_general_appointment_bookings",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1795192605318,
+      "tag": "0003_enforce_staff_appointment_windows",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1795192868158,
+      "tag": "0004_consolidate_crm_access_policies",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1795192923294,
+      "tag": "0005_consolidate_crm_access_policies",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1795192966754,
+      "tag": "0006_consolidate_crm_access_policies",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1795193103454,
+      "tag": "0007_consolidate_crm_access_policies",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1795242000000,
+      "tag": "0008_restrict_public_reads_and_harden_security",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1795282500000,
+      "tag": "0009_restore_public_booking_grants",
+      "breakpoints": true
+    }
+  ]
+}
