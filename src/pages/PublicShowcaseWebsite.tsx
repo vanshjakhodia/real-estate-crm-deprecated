@@ -113,6 +113,7 @@ export const PublicShowcaseWebsite: React.FC<PublicShowcaseWebsiteProps> = ({ on
   const [email, setEmail] = useState(clientUser?.email || '');
   const [intent, setIntent] = useState<LeadIntent>('buy');
   const [preferredLocation, setPreferredLocation] = useState<string>('Civil Lines');
+  const [customLocation, setCustomLocation] = useState<string>('');
   const [budgetMin, setBudgetMin] = useState<number>(10000000);
   const [budgetMax, setBudgetMax] = useState<number>(25000000);
   const [timeline, setTimeline] = useState<string>('1 - 2 Months');
@@ -278,9 +279,21 @@ export const PublicShowcaseWebsite: React.FC<PublicShowcaseWebsiteProps> = ({ on
       return;
     }
 
+    if (preferredLocation === 'Other' && !customLocation.trim()) {
+      setErrorMsg('Please specify your preferred locality or area in Kanpur.');
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const scheduledAt = `${selectedDate}T${selectedSlot}:00+05:30`;
+      const finalLocation = preferredLocation === 'Other'
+        ? (customLocation.trim() || 'Other (Custom Locality)')
+        : preferredLocation;
+      const combinedNotes = preferredLocation === 'Other' && customLocation.trim()
+        ? (notes ? `${notes}\n[Requested Locality: ${customLocation.trim()}]` : `[Requested Locality: ${customLocation.trim()}]`)
+        : notes;
+
       const res = bookPublicSlot({
         fullName,
         phone,
@@ -288,10 +301,10 @@ export const PublicShowcaseWebsite: React.FC<PublicShowcaseWebsiteProps> = ({ on
         type: selectedType,
         propertyId: selectedPropertyId || undefined,
         scheduledAt,
-        notes,
+        notes: combinedNotes,
         consentGiven,
         intent,
-        preferredLocation,
+        preferredLocation: finalLocation,
         budgetMin,
         budgetMax,
         timeline
@@ -849,17 +862,52 @@ export const PublicShowcaseWebsite: React.FC<PublicShowcaseWebsiteProps> = ({ on
                   <label className="font-medium text-[#C8C2B5]">Preferred Kanpur Locality</label>
                   <select
                     value={preferredLocation}
-                    onChange={(e) => setPreferredLocation(e.target.value)}
-                    className="mt-1.5 w-full rounded-lg border border-[#332D24] bg-[#11100E] p-2.5 text-[#EAE5D9]"
+                    onChange={(e) => {
+                      setPreferredLocation(e.target.value);
+                      if (e.target.value !== 'Other') {
+                        setCustomLocation('');
+                      }
+                    }}
+                    className="mt-1.5 w-full rounded-lg border border-[#332D24] bg-[#11100E] p-2.5 text-[#EAE5D9] focus:border-[#C2A675] focus:outline-none"
                   >
                     <option value="Civil Lines">Civil Lines (VIP Riverfront)</option>
                     <option value="Swaroop Nagar">Swaroop Nagar (Prime Commercial)</option>
                     <option value="Tilak Nagar">Tilak Nagar (Prestige Enclave)</option>
-                    <option value="Kalyanpur">Kalyanpur (Metro Hub)</option>
                     <option value="Cantt / Mall Road">Cantt / Mall Road</option>
+                    <option value="Kakadeo">Kakadeo (Commercial & Coaching Hub)</option>
+                    <option value="Lajpat Nagar">Lajpat Nagar (Central Prestige Residential)</option>
+                    <option value="Nawabganj">Nawabganj (Zoo Road & Green Riverfront)</option>
+                    <option value="Kalyanpur">Kalyanpur (Metro Hub & University Corridor)</option>
                     <option value="Ganga Barrage">Ganga Barrage Corridor</option>
-                    <option value="Any Prime Area">Flexible / Multiple</option>
+                    <option value="Sharda Nagar">Sharda Nagar (North Central Corridor)</option>
+                    <option value="Govind Nagar">Govind Nagar (South Commercial Central)</option>
+                    <option value="Ratan Lal Nagar">Ratan Lal Nagar (South Prestige Enclave)</option>
+                    <option value="Shyam Nagar">Shyam Nagar (GT Road & East Corridor)</option>
+                    <option value="Kidwai Nagar">Kidwai Nagar (South Kanpur Core)</option>
+                    <option value="Barra">Barra (South Kanpur Expansion)</option>
+                    <option value="Chakeri / Airport Road">Chakeri / Airport Corridor</option>
+                    <option value="Singhpur / Bithoor Road">Singhpur / Bithoor Road (Riverfront & Farmhouses)</option>
+                    <option value="Panki">Panki (Industrial & Logistics Hub)</option>
+                    <option value="Any Prime Area">Flexible / Multiple Localities</option>
+                    <option value="Other">Other (Specify Locality Below)</option>
                   </select>
+
+                  {preferredLocation === 'Other' && (
+                    <div className="mt-2.5">
+                      <label className="text-xs font-medium text-[#C2A675] flex items-center justify-between">
+                        <span>Specify Your Preferred Kanpur Area / Landmark *</span>
+                        <span className="text-[10px] text-[#A8A194]">Custom Location</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={customLocation}
+                        onChange={(e) => setCustomLocation(e.target.value)}
+                        placeholder="e.g. Arya Nagar, Ashok Nagar, Rawatpur, Pandu Nagar, or your colony"
+                        className="mt-1 w-full rounded-lg border border-[#C2A675]/80 bg-[#161411] p-2.5 text-xs text-[#EAE5D9] placeholder-[#736B5F] focus:border-[#C2A675] focus:outline-none focus:ring-1 focus:ring-[#C2A675]"
+                      />
+                    </div>
+                  )}
                 </div>
 
                 <div>

@@ -661,12 +661,23 @@ export const LeadsPage: React.FC<LeadsPageProps> = ({ onSelectLead, initialFilte
                   >
                     <option value="Civil Lines, Kanpur">Civil Lines</option>
                     <option value="Swaroop Nagar, Kanpur">Swaroop Nagar</option>
-                    <option value="Kakadeo, Kanpur">Kakadeo</option>
                     <option value="Tilak Nagar, Kanpur">Tilak Nagar</option>
-                    <option value="Shyam Nagar, Kanpur">Shyam Nagar</option>
+                    <option value="Cantt / Mall Road, Kanpur">Cantt / Mall Road</option>
+                    <option value="Kakadeo, Kanpur">Kakadeo</option>
+                    <option value="Lajpat Nagar, Kanpur">Lajpat Nagar</option>
+                    <option value="Nawabganj, Kanpur">Nawabganj</option>
                     <option value="Kalyanpur, Kanpur">Kalyanpur (GT Road)</option>
+                    <option value="Ganga Barrage, Kanpur">Ganga Barrage</option>
+                    <option value="Sharda Nagar, Kanpur">Sharda Nagar</option>
+                    <option value="Govind Nagar, Kanpur">Govind Nagar</option>
+                    <option value="Ratan Lal Nagar, Kanpur">Ratan Lal Nagar</option>
+                    <option value="Shyam Nagar, Kanpur">Shyam Nagar</option>
                     <option value="Kidwai Nagar, Kanpur">Kidwai Nagar</option>
-                    <option value="Mall Road / Cantt, Kanpur">Mall Road / Cantt</option>
+                    <option value="Barra, Kanpur">Barra</option>
+                    <option value="Chakeri / Airport Road, Kanpur">Chakeri / Airport Road</option>
+                    <option value="Singhpur / Bithoor Road, Kanpur">Singhpur / Bithoor Road</option>
+                    <option value="Panki, Kanpur">Panki</option>
+                    <option value="Flexible / Multiple, Kanpur">Flexible / Multiple Localities</option>
                   </select>
                 </div>
                 <div>
