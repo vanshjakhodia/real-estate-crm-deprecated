@@ -9,8 +9,10 @@ import {
   Menu,
   ChevronDown,
   ArrowLeft,
-  LogOut
+  LogOut,
+  FileSpreadsheet
 } from 'lucide-react';
+import { exportMasterCrmToExcel } from '../lib/excel';
 
 interface NavbarProps {
   onToggleSidebar: () => void;
@@ -29,7 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onGoBack,
   onLogoutToPublic
 }) => {
-  const { currentUser, currentRole, switchUser, teamMembers, settings } = useCrm();
+  const { currentUser, currentRole, switchUser, teamMembers, settings, leads, appointments, properties } = useCrm();
 
   return (
     <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b border-[#2C2720] bg-[#14120F]/95 px-4 backdrop-blur-md sm:px-6">
@@ -76,6 +78,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Right Controls */}
       <div className="flex items-center gap-2 sm:gap-3">
+        {/* Instant MS Excel Master Dossier Export */}
+        <button
+          onClick={() => exportMasterCrmToExcel({ leads, appointments, properties })}
+          className="flex items-center gap-1.5 rounded-lg border border-[#3E3528] bg-[#1E1C18] px-2.5 sm:px-3 py-1.5 text-xs font-medium text-[#C2A675] hover:bg-[#28241E] hover:border-[#C2A675] transition-all shadow-xs"
+          title="Export Complete Multi-Sheet MS Excel (.xlsx) Dossier"
+        >
+          <FileSpreadsheet className="h-3.5 w-3.5 text-[#C2A675]" />
+          <span className="hidden md:inline">MS Excel</span>
+        </button>
+
         {/* Security & RLS Compliance Center */}
         <button
           onClick={onOpenSecurity}

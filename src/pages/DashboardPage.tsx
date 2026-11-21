@@ -14,8 +14,10 @@ import {
   Clock,
   Sparkles,
   ShieldCheck,
-  Compass
+  Compass,
+  FileSpreadsheet
 } from 'lucide-react';
+import { exportMasterCrmToExcel } from '../lib/excel';
 import { formatIndianCurrency, formatIST, buildWhatsAppLink } from '../lib/utils';
 
 interface DashboardPageProps {
@@ -85,6 +87,14 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           </div>
 
           <div className="flex items-center gap-2.5">
+            <button
+              onClick={() => exportMasterCrmToExcel({ leads, appointments, properties })}
+              className="flex items-center gap-2 rounded-lg border border-[#3E3528] bg-[#1E1C18] hover:bg-[#28241E] hover:border-[#C2A675] px-3.5 py-2.5 text-xs font-medium text-[#C2A675] transition-all shadow-xs"
+              title="Download full CRM ledger in Microsoft Excel format (.xlsx)"
+            >
+              <FileSpreadsheet className="h-4 w-4" />
+              <span>Export MS Excel (.xlsx)</span>
+            </button>
             <button
               onClick={onOpenAddLead}
               className="flex items-center gap-2 rounded-lg bg-[#C2A675] hover:bg-[#B39562] px-4 py-2.5 text-xs font-medium text-[#11100E] border border-[#A68A56] transition-all shadow-xs"

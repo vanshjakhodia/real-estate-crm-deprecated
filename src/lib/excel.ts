@@ -13,7 +13,7 @@ import { normalizeIndianPhone, formatIndianCurrency, formatIST } from './utils';
  * Location | Budget | Timeline | Lead Score | Status | Appointment Date |
  * AI Summary | Assigned To
  */
-export function exportLeadsToExcel(leads: Lead[], appointments: Appointment[] = [], filename = 'Kanpur_Prime_Leads.xlsx') {
+export function exportLeadsToExcel(leads: Lead[], appointments: Appointment[] = [], filename = 'Lineage_Properties_Leads.xlsx') {
   const appointmentMap = new Map<string, string>();
   appointments.forEach((apt) => {
     if (apt.status === 'booked') {
@@ -75,7 +75,7 @@ export function exportLeadsToExcel(leads: Lead[], appointments: Appointment[] = 
 /**
  * EXPORT APPOINTMENTS TO EXCEL
  */
-export function exportAppointmentsToExcel(appointments: Appointment[], filename = 'Kanpur_Appointments.xlsx') {
+export function exportAppointmentsToExcel(appointments: Appointment[], filename = 'Lineage_Properties_Appointments.xlsx') {
   const exportData = appointments.map((apt) => ({
     'Scheduled Date & Time': formatIST(apt.scheduled_at),
     'Type': apt.type === 'site_visit' ? 'Site Visit' : 'Phone Call',
@@ -96,7 +96,7 @@ export function exportAppointmentsToExcel(appointments: Appointment[], filename 
 /**
  * EXPORT PROPERTIES CATALOG TO EXCEL
  */
-export function exportPropertiesToExcel(properties: Property[], filename = 'Kanpur_Properties.xlsx') {
+export function exportPropertiesToExcel(properties: Property[], filename = 'Lineage_Properties_Estates.xlsx') {
   const exportData = properties.map((prop) => ({
     'Project Name': prop.project_name,
     'Location': prop.location,
@@ -113,6 +113,150 @@ export function exportPropertiesToExcel(properties: Property[], filename = 'Kanp
   const worksheet = XLSX.utils.json_to_sheet(exportData);
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, worksheet, 'Properties');
+  XLSX.writeFile(workbook, filename);
+}
+
+/**
+ * EXPORT COMPLETE MASTER CRM DATABASE TO MULTI-TAB MS EXCEL WORKBOOK (.xlsx)
+ * Consolidates all Client Leads, Site Walkthroughs, Estates, and Firm Details
+ */
+export function exportMasterCrmToExcel({
+  leads,
+  appointments,
+  properties,
+  filename = 'Lineage_Properties_Master_Dossier.xlsx'
+}: {
+  leads: Lead[];
+  appointments: Appointment[];
+  properties: Property[];
+  filename?: string;
+}) {
+  const workbook = XLSX.utils.book_new();
+
+  // Tab 1: Client Leads Registry
+  const appointmentMap = new Map<string, string>();
+  appointments.forEach((apt) => {
+    if (apt.status === 'booked') {
+      appointmentMap.set(apt.lead_id, formatIST(apt.scheduled_at));
+    }
+  });
+
+  const leadsData = leads.map((lead) => {
+    const budgetStr =
+      lead.budget_min || lead.budget_max
+        ? `${formatIndianCurrency(lead.budget_min)} - ${formatIndianCurrency(lead.budget_max)}`
+        : 'Not Specified';
+
+    return {
+      'Date Registered': formatIST(lead.created_at),
+      'Full Legal Name': lead.full_name,
+      'Mobile (+91)': lead.phone,
+      'Email': lead.email || '—',
+      'Preferred Locality': lead.preferred_location || '—',
+      'Intent': lead.intent ? lead.intent.toUpperCase() : 'BUY',
+      'Property Type': lead.property_type || '—',
+      'Budget Range': budgetStr,
+      'Timeline': lead.timeline || '—',
+      'Score': lead.lead_score.toUpperCase(),
+      'Status': lead.status.replace(/_/g, ' ').toUpperCase(),
+      'Confirmed Walkthrough': appointmentMap.get(lead.id) || 'None Scheduled',
+      'Notes & Specifications': lead.notes || lead.ai_summary || '—',
+      'DPDP Consent': lead.consent_given ? 'VERIFIED' : 'PENDING'
+    };
+  });
+  const leadsSheet = XLSX.utils.json_to_sheet(leadsData.length > 0 ? leadsData : [{
+    'Date Registered': 'No clients registered yet',
+    'Full Legal Name': '—',
+    'Mobile (+91)': '—',
+    'Email': '—',
+    'Preferred Locality': '—',
+    'Intent': '—',
+    'Property Type': '—',
+    'Budget Range': '—',
+    'Timeline': '—',
+    'Score': '—',
+    'Status': '—',
+    'Confirmed Walkthrough': '—',
+    'Notes & Specifications': '—',
+    'DPDP Consent': '—'
+  }]);
+  leadsSheet['!cols'] = [
+    { wch: 20 }, { wch: 24 }, { wch: 16 }, { wch: 26 }, { wch: 24 },
+    { wch: 12 }, { wch: 16 }, { wch: 22 }, { wch: 16 }, { wch: 12 },
+    { wch: 18 }, { wch: 24 }, { wch: 45 }, { wch: 14 }
+  ];
+  XLSX.utils.book_append_sheet(workbook, leadsSheet, 'Client Registry');
+
+  // Tab 2: Site Walkthroughs & Appointments
+  const appointmentsData = appointments.map((apt) => ({
+    'Scheduled Time (IST)': formatIST(apt.scheduled_at),
+    'Type': apt.type === 'site_visit' ? 'Site Walkthrough' : 'Consultation Call',
+    'Status': apt.status.toUpperCase(),
+    'Client Name': apt.lead?.full_name || '—',
+    'Client Phone': apt.lead?.phone || '—',
+    'Estate Project': apt.property?.project_name || 'General Locality Tour',
+    'Locality': apt.property?.location || apt.lead?.preferred_location || 'Kanpur',
+    'Special Instructions': apt.notes || '—'
+  }));
+  const aptSheet = XLSX.utils.json_to_sheet(appointmentsData.length > 0 ? appointmentsData : [{
+    'Scheduled Time (IST)': 'No appointments scheduled yet',
+    'Type': '—',
+    'Status': '—',
+    'Client Name': '—',
+    'Client Phone': '—',
+    'Estate Project': '—',
+    'Locality': '—',
+    'Special Instructions': '—'
+  }]);
+  aptSheet['!cols'] = [
+    { wch: 24 }, { wch: 18 }, { wch: 14 }, { wch: 22 }, { wch: 16 },
+    { wch: 26 }, { wch: 24 }, { wch: 40 }
+  ];
+  XLSX.utils.book_append_sheet(workbook, aptSheet, 'Site Walkthroughs');
+
+  // Tab 3: Estate Portfolio
+  const propertiesData = properties.map((prop) => ({
+    'Project Name': prop.project_name,
+    'Locality / Area': prop.location,
+    'Property Type': prop.property_type,
+    'BHK Layout': prop.bhk || '—',
+    'Carpet Area (sq.ft)': prop.carpet_area || '—',
+    'Price Range': `${formatIndianCurrency(prop.price_min)} - ${formatIndianCurrency(prop.price_max)}`,
+    'RERA Number': prop.rera_number || 'UP RERA Verified',
+    'Status': prop.status.toUpperCase(),
+    'Description': prop.description
+  }));
+  const propSheet = XLSX.utils.json_to_sheet(propertiesData.length > 0 ? propertiesData : [{
+    'Project Name': 'Curating verified developments',
+    'Locality / Area': 'Kanpur Prime',
+    'Property Type': 'Luxury Residential',
+    'BHK Layout': '3/4 BHK',
+    'Carpet Area (sq.ft)': '2500',
+    'Price Range': '₹1.50 Cr - ₹4.50 Cr',
+    'RERA Number': 'UP RERA Verified',
+    'Status': 'AVAILABLE',
+    'Description': 'Premium curated residences'
+  }]);
+  propSheet['!cols'] = [
+    { wch: 26 }, { wch: 24 }, { wch: 18 }, { wch: 14 }, { wch: 18 },
+    { wch: 26 }, { wch: 22 }, { wch: 14 }, { wch: 45 }
+  ];
+  XLSX.utils.book_append_sheet(workbook, propSheet, 'Estate Portfolio');
+
+  // Tab 4: Firm Information
+  const firmData = [
+    { 'Parameter': 'Firm Legal Name', 'Details': 'Lineage Properties Pvt Ltd' },
+    { 'Parameter': 'Jurisdiction', 'Details': 'Kanpur, Uttar Pradesh, India' },
+    { 'Parameter': 'Office Location', 'Details': 'Civil Lines & Swaroop Nagar, Kanpur' },
+    { 'Parameter': 'Operating Hours', 'Details': '11:00 AM – 7:00 PM IST (Mon – Sat)' },
+    { 'Parameter': 'Official Inquiries', 'Details': 'admin@lineageproperties.com' },
+    { 'Parameter': 'Data Protection Standard', 'Details': 'DPDP Act 2023 Compliant' },
+    { 'Parameter': 'Export Timestamp', 'Details': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) }
+  ];
+  const firmSheet = XLSX.utils.json_to_sheet(firmData);
+  firmSheet['!cols'] = [{ wch: 26 }, { wch: 45 }];
+  XLSX.utils.book_append_sheet(workbook, firmSheet, 'Firm Profile');
+
   XLSX.writeFile(workbook, filename);
 }
 
